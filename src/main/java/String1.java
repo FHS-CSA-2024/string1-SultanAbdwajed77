@@ -1,7 +1,8 @@
-public class String1 {
-    private String unimplemented = "UNIMPLEMENTED CODE";
+package src.main.java;
 
-    public static void main(String[] args){
+public class String1 {
+    
+    public static void main(String[] args) {
         String1 s = new String1();
         System.out.println(s.helloName("Bob"));  // Expected: "Hello Bob!"
         System.out.println(s.makeAbba("Hi", "Bye")); // Expected: "HiByeByeHi"
@@ -21,11 +22,6 @@ public class String1 {
         System.out.println(s.deFront("Hello")); // Expected: "llo"
     }
 
-    public String1() {
-    }
-
-    // Implementations of the required methods
-
     public String helloName(String name) {
         return "Hello " + name + "!";
     }
@@ -43,7 +39,7 @@ public class String1 {
     }
 
     public String extraEnd(String str) {
-        String lastTwo = str.substring(str.length() - 2);
+        String lastTwo = str.length() >= 2 ? str.substring(str.length() - 2) : str;
         return lastTwo + lastTwo + lastTwo;
     }
 
@@ -52,7 +48,7 @@ public class String1 {
     }
 
     public String withoutEnd(String str) {
-        return str.substring(1, str.length() - 1);
+        return str.length() <= 2 ? "" : str.substring(1, str.length() - 1);
     }
 
     public String comboString(String a, String b) {
@@ -70,7 +66,7 @@ public class String1 {
     }
 
     public String left2(String str) {
-        return str.substring(2) + str.substring(0, 2);
+        return str.length() < 2 ? str : str.substring(2) + str.substring(0, 2);
     }
 
     public boolean hasBad(String str) {
@@ -85,14 +81,15 @@ public class String1 {
     }
 
     public String minCat(String a, String b) {
-        if (a.length() > b.length()) {
-            return a.substring(a.length() - b.length()) + b;
-        }
-        return a + b.substring(b.length() - a.length());
+        int minLength = Math.min(a.length(), b.length());
+        return a.substring(a.length() - minLength) + b.substring(b.length() - minLength);
     }
 
     public String withoutX(String str) {
-        if (str.length() > 0 && str.charAt(0) == 'x') {
+        if (str.length() == 0) {
+            return str;
+        }
+        if (str.charAt(0) == 'x') {
             str = str.substring(1);
         }
         if (str.length() > 0 && str.charAt(str.length() - 1) == 'x') {
@@ -101,7 +98,7 @@ public class String1 {
         return str;
     }
 
-    public String deFront(String str) {    
+    public String deFront(String str) {
         String result = "";
         if (str.length() > 0 && str.charAt(0) == 'a') {
             result += 'a';
@@ -111,8 +108,6 @@ public class String1 {
         }
         if (str.length() > 2) {
             result += str.substring(2);
-        } else if (str.length() == 1) {
-            result += str.charAt(0);
         }
         return result;
     }
