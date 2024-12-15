@@ -1,26 +1,28 @@
 package src.main.java;
 
-public class String1 {
-
-    public static void main(String[] args) {
+public class String1
+{
+    public static void main(String[] args){
         String1 s = new String1();
-        System.out.println(s.helloName("Bob"));               // Expected: "Hello Bob!"
-        System.out.println(s.makeAbba("Hi", "Bye"));          // Expected: "HiByeByeHi"
-        System.out.println(s.makeTags("i", "Yay"));           // Expected: "<i>Yay</i>"
-        System.out.println(s.makeOutWord("<<>>", "Yay"));     // Expected: "<<Yay>>"
-        System.out.println(s.extraEnd("Hello"));              // Expected: "lolo"
-        System.out.println(s.firstTwo("Hello"));              // Expected: "He"
-        System.out.println(s.withoutEnd("Hello"));            // Expected: "ell"
-        System.out.println(s.comboString("hi", "Hello"));     // Expected: "hiHellohi"
-        System.out.println(s.middleThree("Candy"));           // Expected: "and"
-        System.out.println(s.extraFront("Hello"));            // Expected: "HeHeHe"
-        System.out.println(s.left2("Hello"));                 // Expected: "lloHe"
-        System.out.println(s.hasBad("badxx"));                // Expected: true
-        System.out.println(s.conCat("abc", "cat"));           // Expected: "abcat"
-        System.out.println(s.minCat("Hello", "Hi"));          // Expected: "loHi"
-        System.out.println(s.withoutX("xHix"));               // Expected: "Hi"
-        System.out.println(s.deFront("Hello"));               // Expected: "llo"
+        System.out.println(s.helloName("Bob"));
+        System.out.println(s.makeAbba("Hi", "Bye"));
+        System.out.println(s.makeTags("i", "Yay"));
+        System.out.println(s.makeOutWord("<<>>", "Yay"));
+        System.out.println(s.extraEnd("Hello"));
+        System.out.println(s.firstTwo("Hello"));
+        System.out.println(s.withoutEnd("Hello"));
+        System.out.println(s.comboString("hi", "Hello"));
+        System.out.println(s.middleThree("Candy"));
+        System.out.println(s.extraFront("Hello"));
+        System.out.println(s.left2("Hello"));
+        System.out.println(s.hasBad("badxx"));
+        System.out.println(s.conCat("abc", "cat"));
+        System.out.println(s.minCat("Hello", "Hi"));
+        System.out.println(s.withoutX("xHix"));
+        System.out.println(s.deFront("Hello"));
     }
+
+    public String1() {}
 
     public String helloName(String name) {
         return "Hello " + name + "!";
@@ -47,8 +49,12 @@ public class String1 {
         return str.length() < 2 ? str : str.substring(0, 2);
     }
 
+    public String firstHalf(String str) {
+        return str.substring(0, str.length() / 2);
+    }
+
     public String withoutEnd(String str) {
-        return str.length() < 2 ? str : str.substring(1, str.length() - 1);
+        return str.substring(1, str.length() - 1);
     }
 
     public String comboString(String a, String b) {
@@ -61,8 +67,8 @@ public class String1 {
     }
 
     public String extraFront(String str) {
-        String front = str.length() < 2 ? str : str.substring(0, 2);
-        return front + front + front;
+        String firstTwo = str.length() < 2 ? str : str.substring(0, 2);
+        return firstTwo + firstTwo + firstTwo;
     }
 
     public String left2(String str) {
@@ -74,24 +80,22 @@ public class String1 {
     }
 
     public String conCat(String a, String b) {
-        if (a.length() > 0 && b.length() > 0 && a.charAt(a.length() - 1) == b.charAt(0)) {
+        if (a.endsWith("") && b.startsWith("")) {
             return a + b.substring(1);
         }
         return a + b;
     }
 
     public String minCat(String a, String b) {
-        if (a.length() > b.length()) {
-            return a.substring(a.length() - b.length()) + b;
-        }
-        return a + b.substring(b.length() - a.length());
+        int minLength = Math.min(a.length(), b.length());
+        return a.substring(a.length() - minLength) + b.substring(b.length() - minLength);
     }
 
     public String withoutX(String str) {
-        if (str.length() > 0 && str.charAt(0) == 'x') {
+        if (str.startsWith("x")) {
             str = str.substring(1);
         }
-        if (str.length() > 0 && str.charAt(str.length() - 1) == 'x') {
+        if (str.endsWith("x")) {
             str = str.substring(0, str.length() - 1);
         }
         return str;
@@ -100,15 +104,13 @@ public class String1 {
     public String deFront(String str) {
         String result = "";
         if (str.length() > 0 && str.charAt(0) == 'a') {
-            result += 'a';
+            result += "a";
         }
         if (str.length() > 1 && str.charAt(1) == 'b') {
-            result += 'b';
+            result += "b";
         }
         if (str.length() > 2) {
             result += str.substring(2);
-        } else if (str.length() == 1) {
-            result += str.charAt(0);
         }
         return result;
     }
