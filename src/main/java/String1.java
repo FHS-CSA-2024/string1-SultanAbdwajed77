@@ -43,7 +43,6 @@ public class String1
     public String firstTwo(String str){
         if(str.length() < 2){
             return str;
-        } else {
             return str.substring(0,2);
     }
     public String firstHalf(String str){
@@ -53,10 +52,9 @@ public class String1
         return str.substring(1, str.length() - 1);
     }
     public String comboString(String a, String b){
-        if(a.length() < b.length()){
+        if(a.length() > b.length()){
+            return b + a + b;
             return a + b + a;
-        } else {
-            return b + a + b
     }
     public String middleThree(String str){
         int mid = str.length() / 2;
@@ -66,7 +64,7 @@ public class String1
         String firstTwo = "";
 
         if(str.length() >= 2){
-            firstTwo = str.substring(0,2);
+            firstTwo = str.substring(0, 2);
         } else {
             firstTwo = str;
         }
@@ -75,10 +73,7 @@ public class String1
         return result;
     }
     public String left2(String str){
-        if(str.length() < 2){
-            return str;
-        }
-        return str.substring(2) + str.substring(0,2);
+        return str.substring(2) + str.substring(0, 2);
     }
     public boolean hasBad(String str){
         return str.startsWith("bad") || (str.length() > 1 && str.substring(1).startsWith("bad"));
