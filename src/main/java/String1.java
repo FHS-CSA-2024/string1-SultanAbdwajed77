@@ -21,96 +21,110 @@ public class String1
         System.out.println(s.withoutX("xHix"));
         System.out.println(s.deFront("Hello"));
     }
+    public String1 () {}
+    
 
-    public String1() {}
-
-    public String helloName(String name) {
+    public String helloName(String name){
         return "Hello " + name + "!";
     }
-
-    public String makeAbba(String a, String b) {
+    public String makeAbba(String a, String b){
         return a + b + b + a;
     }
-
-    public String makeTags(String tag, String word) {
+    public String makeTags(String tag, String word){
         return "<" + tag + ">" + word + "</" + tag + ">";
     }
-
-    public String makeOutWord(String out, String word) {
+    public String makeOutWord(String out, String word){
         return out.substring(0, 2) + word + out.substring(2);
     }
-
-    public String extraEnd(String str) {
+    public String extraEnd(String str){
         String lastTwo = str.substring(str.length() - 2);
         return lastTwo + lastTwo + lastTwo;
     }
-
-    public String firstTwo(String str) {
-        return str.length() < 2 ? str : str.substring(0, 2);
+    public String firstTwo(String str){
+        if(str.length() < 2){
+            return str;
+        } else {
+            return str.substring(0,2);
     }
-
-    public String firstHalf(String str) {
+    public String firstHalf(String str){
         return str.substring(0, str.length() / 2);
     }
-
-    public String withoutEnd(String str) {
+    public String withoutEnd(String str){
         return str.substring(1, str.length() - 1);
     }
-
-    public String comboString(String a, String b) {
-        return a.length() < b.length() ? a + b + a : b + a + b;
+    public String comboString(String a, String b){
+        if(a.length() < b.length()){
+            return a + b + a;
+        } else {
+            return b + a + b
     }
-
-    public String middleThree(String str) {
+    public String middleThree(String str){
         int mid = str.length() / 2;
         return str.substring(mid - 1, mid + 2);
     }
+    public String extraFront(String str){
+        String firstTwo = "";
 
-    public String extraFront(String str) {
-        String firstTwo = str.length() < 2 ? str : str.substring(0, 2);
-        return firstTwo + firstTwo + firstTwo;
+        if(str.length() >= 2){
+            firstTwo = str.substring(0,2);
+        } else {
+            firstTwo = str;
+        }
+        String result = firstTwo + firstTwo + firstTwo;
+
+        return result;
     }
-
-    public String left2(String str) {
-        return str.substring(2) + str.substring(0, 2);
+    public String left2(String str){
+        if(str.length() < 2){
+            return str;
+        }
+        return str.substring(2) + str.substring(0,2);
     }
-
-    public boolean hasBad(String str) {
+    public boolean hasBad(String str){
         return str.startsWith("bad") || (str.length() > 1 && str.substring(1).startsWith("bad"));
     }
-
-    public String conCat(String a, String b) {
-        if (!a.isEmpty() && !b.isEmpty() && a.charAt(a.length() - 1) == b.charAt(0)) {
+    public String conCat(String a, String b){
+        if(a.length() == 0){
+            return b;
+        }
+        if(b.length() == 0){
+            return a;
+        }
+        if(a.charAt(a.length() - 1) == b.charAt(0)){
             return a + b.substring(1);
+        } else {
+            return a + b;
         }
-        return a + b;
     }
-
-    public String minCat(String a, String b) {
+    public String minCat(String a, String b){
         int minLength = Math.min(a.length(), b.length());
-        return a.substring(a.length() - minLength) + b.substring(b.length() - minLength);
+        String partA = a.substring(a.length() - minLength);
+        String partB = b.substring(b.length() - minLength);
+        return partA + partB;
     }
+    public String withoutX(String str){
+        String result = str;
+        if(result.length() > 0 && result.charAt(0) == "x"){
+            result = result.substring(1);
+        }
+        if(result.length() > 0 && result.charAt(result.length() - 1) == "x"){
+            result = result.substring(0, result.length() - 1);
+        }
 
-    public String withoutX(String str) {
-        if (str.startsWith("x")) {
-            str = str.substring(1);
-        }
-        if (str.endsWith("x")) {
-            str = str.substring(0, str.length() - 1);
-        }
-        return str;
+        return result;
     }
-
-    public String deFront(String str) {
+    public String deFront(String str){
         String result = "";
-        if (str.length() > 0 && str.charAt(0) == 'a') {
-            result += "a";
-        }
-        if (str.length() > 1 && str.charAt(1) == 'b') {
-            result += "b";
-        }
-        if (str.length() > 2) {
-            result += str.substring(2);
+        if(str.length() > 0){
+            if(str.charAt(0) == "a"){
+                result += "a";
+            }
+            if(str.length() > 1 && str.charAt(1) == "b"){
+                result += "b";
+            }
+            if(str.length() > 2){
+                result += str.substring(2);
+            }
         }
         return result;
     }
