@@ -21,7 +21,7 @@ public class String1
         System.out.println(s.withoutX("xHix"));
         System.out.println(s.deFront("Hello"));
     }
-    public String1 () {}
+    public String1()
     
 
     public String helloName(String name){
